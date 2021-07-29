@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Todo List</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" /> <!-- https://fonts.google.com/ -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"><!-- https://getbootstrap.com/ -->
+ 
+    <link href="{{url_for('static', filename='main.css')}}" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div class="tm-container">        
+     <div>
+            <div class="tm-row pt-4">
+                <div class="tm-col-left">
+                    <div class="tm-site-header media">
+                        
+                        <div class="media-body">
+                            <h1 class="tm-sitename"><a href="/" class="tm-sitename">Todo List</a></h1>
+                            <p class="tm-slogon">personal TODO app</p>
+                        </div>        
+                    </div>
+                </div>
+                <div class="tm-col-right">
+                    <nav class="navbar navbar-expand-lg" id="tm-main-nav">
+                        <button class="navbar-toggler toggler-example mr-0 ml-auto" type="button" 
+                            data-toggle="collapse" data-target="#navbar-nav" 
+                            aria-controls="navbar-nav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span><i class="fas fa-bars"></i></span>
+                        </button>
+                        <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
+                            <ul class="navbar-nav text-uppercase">
+                             <li class="nav-item">
+                                    
+                                </li>
+                                <li class="nav-item">
+                                    
+                                </li>
+                                <li class="nav-item">
+        
+                                <li class="nav-item" style="padding-left:200px;">
+                                    <a id="Mybtn2"  class="nav-link tm-nav-link" href="#">Let's Get Started</a>
+                                </li>                            
+                                <li class="nav-item">
+             
+                            </ul>                            
+                        </div>                        
+                    </nav>
+                </div>
+            </div>
+            
+            <div class="tm-row">
+                <div class="tm-col-left">
+                   <div class =  "position" id="contact-form" >
+                           <div style ="padding-bottom:30px;">
+                            <h3>Sign In</h3>
+                            
+                           </div>    
+                      <form  action="/login" method="POST" class="edit">
+                            <div class="form-group mb-4">
+                                <input type="email" name="email" class="form-control" placeholder="Email" required="" />
+                            </div>
+                            <div class="form-group mb-4">
+                                <input type="password" name="password" class="form-control" placeholder="password" required="" />
+                            </div>
+                            <div class="form-group mb-5">
+
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-big btn-primary">Sign In</button>
+                            
+                        </form>
+                          <div style ="padding-top:10px;"><h6>{{error}}</h6></div>
+                   </div>
+                  
+                 </div>
+                 </div>
+                 <div class="tm-col-right" >
+                     <div class =  "position" id="contact-form1" style="display: none;" >
+                      <div style ="padding-bottom:30px;"> <h3>Sign Up</h3></div>    
+                     <form  action="/register" method="POST" class="edit">
+                            <div class="form-group mb-4">
+                                <input type="email" name="email" class="form-control" placeholder="Email" required="" />
+                            </div>
+                            <div class="form-group mb-4">
+                                <input type="password" name="password" class="form-control" placeholder="password" required="" />
+                            </div>
+                            <div class="form-group mb-5">
+
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-big btn-primary">Sign Up</button>
+                            </div>
+                           
+                        </form>
+                         
+                    </div>
+                </div>
+               
+            </div>
+  
+  </div>           
+ 
+ <div class="tm-row">
+            <div class="tm-col-left text-center">            
+                <ul class="tm-bg-controls-wrapper">
+                    <li class="tm-bg-control active" data-id="0"></li>
+                    <li class="tm-bg-control" data-id="1"></li>
+                    <li class="tm-bg-control" data-id="2"></li>
+                </ul>            
+            </div>        
+            <div class="tm-col-right tm-col-footer">
+                <footer class="tm-site-footer text-right">
+                    <p class="mb-0"> 
+                    
+                     <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-text-link"></a></p>
+                </footer>
+            </div>  
+        </div>
+
+        <!--  background design -->
+        <div class="tm-bg">
+            <div class="tm-bg-left"></div>
+            <div class="tm-bg-right"></div>
+        </div>
+    </div>
+   </div>
+
+    <script src="{{url_for('static', filename='jquery-3.4.1.min.js')}}"></script>
+    <script src="{{url_for('static', filename='bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='jquery.backstretch.min.js')}}"></script>
+    <script src="{{url_for('static', filename='main.js')}}"></script>
+  <script>
+            
+          $(document).ready(function(){
+	$('#Mybtn2').click(function(){
+  		$('#contact-form').toggle(500);
+  		
+  });
+});
+        </script>
+ <script>
+            
+          $(document).ready(function(){
+	$('#Mybtn2').click(function(){
+  		$('#contact-form1').toggle(500);
+  		
+  });
+});
+  </script>
+</body>
+</html>
