@@ -92,9 +92,9 @@
                            <ol class ="disp_desc">
                             {% for data,numbers,overdue,id in datas %}
                              {% if overdue=='y' %}
-                             <li class="tstyle" style="background-color:#6b7b8c;border-radius: 25px;"><a href="/task/delete/{{id}}" class="tm-sitename">{{data}}-   due-{{numbers}} </a></li>
+                             <li class="tstyle" style="background-color:#6b7b8c;border-radius: 25px;"><a href="/task/delete/{{id}}" class="tm-sitename">{{data}}-&emsp;&emsp;due-{{numbers}} </a></li>
                              {% else %}
-                              <li class="tstyle"><a href="/task/delete/{{id}}" class="tm-sitename">{{data}}-   due-{{numbers}}</a></li>
+                              <li class="tstyle"><a href="/task/delete/{{id}}" class="tm-sitename">{{data}}-&emsp;&emsp;due-{{numbers}}</a></li>
                              {% endif %}
                             {%endfor%}
                              
