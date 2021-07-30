@@ -1,3 +1,19 @@
+
+ $(document).ready(function(){
+	$('#Mybtn2').click(function(){
+  		$('#contact-form').toggle(500);
+  		
+  });
+});
+    
+ 
+ $(document).ready(function(){
+	$('#Mybtn2').click(function(){
+  		$('#contact-form1').toggle(500);
+  		
+  });
+ });
+ 
 const initBg = (autoplay = false) => {
     const bgImgsNames = ['bg-1.jpg', 'bg-2.jpg', 'bg-3.jpg'];
     const bgImgs = bgImgsNames.map(img => "static/img/"+img );

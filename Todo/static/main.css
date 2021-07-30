@@ -26,7 +26,7 @@ p { line-height: 1.9; }
     border-radius: 0;
     transform: skewX(-15deg);
     background-color: rgba(0,0,0,0.5);
-    color: white;    
+    color: white;   
 }
 
 .navbar-toggler i { transform: skewX(15deg); }
@@ -41,7 +41,7 @@ p { line-height: 1.9; }
 .navbar-expand-lg .navbar-nav .tm-nav-link {
     font-size: 1.3rem;
     font-weight: 400;
-    color: white;    
+    color: white;   
     padding-bottom: 30px;    
 }
 
@@ -201,6 +201,58 @@ textarea {
 
 .position{padding :100px}
 
+.cyanbox{
+         padding-left:100px
+         position:relative ;
+         height :450px;
+         width:600px;
+         overflow:auto;
+         border-color:white;
+        }
+ .disc_dec{
+          padding:10px;
+          position :relative;
+          height:100%;
+          width:100%;
+          font-family: 'Open Sans', Arial, sans-serif;
+          font-size: 35px;
+          font-weight: 300;
+          
+          }
+.tstyle{
+        padding-left :20px;
+        font-family: 'Open Sans', Arial, sans-serif;
+        font-size: 25px;
+        font-weight: 300;
+        margin:20px;
+        
+       }
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; 
+}
+
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  -webkit-text-stroke: 2px black;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
 .form-control:focus {
     color: white;
     background-color: transparent;    

@@ -9,9 +9,13 @@ from flask import Blueprint,flash,session,redirect,g
 def create_app():
    app = Flask("Todo")
    
+   
    app.config.from_mapping(
-    DATABASE="list",  
-    SECRET_KEY="uni" )
+        
+        SECRET_KEY="unii"
+    )
+   
+
     
    from . import task 
    app.register_blueprint(task.bp)
@@ -36,39 +40,35 @@ def create_app():
    
    @app.route("/")
    def home():
-    return render_template("index.html")
+     session.clear()
+     return render_template("index.html")
    
    @app.route("/login",methods=["GET","POST"])
    def login():
+   
      if request.method == "POST":
-       username=request.form.get('username')
+       email=request.form.get('email')
        password=request.form.get('password')
        conn = db.get_db()
        error = None
        cursor= conn.cursor()
-       cursor.execute("select username,password,id from people where username=%s",(username))
+       cursor.execute("select password,email,id from people where email=%s",(email,))
        data = cursor.fetchone()
-       received_username=data[1]
-       received_password=data[0]
+       if data is not None:
+        received_email=data[1]
+        received_password=data[0]
       
-       if (received_username is not None and received_password==password):
-          session.clear()
-          session["user_id"] = data[2]
-          return redirect(url_for('task.dashboard'))
-       else:
-         error="Invalid username or Password"
-     return render_template("index.html", error=error)
-     """
-       
-       cursor= conn.cursor()
-       cursor.execute("select o.username,o.password from people o where o.username=%s",(username))
-       data = cursor.fetchone()
-       received_username=data[0]
-       received_password=data[1]
-       error_message = "Invalid username or Password"
-      
-       login_user(email)
-       return redirect(url_for('bp.dashboard'))"""
+        if (received_email is not None and received_password==password):
+           session.clear()
+           session["user_id"] = data[2]
+           return redirect(url_for('task.dashboard'))
+        else:
+          error="Invalid Email or Password"
+       return redirect(url_for('home'))
+ 
+     user_id = session.get("user_id") 
+     return render_template("index.html", user_id=user_id)
+ 
      
      
       
@@ -79,14 +79,13 @@ def create_app():
        conn=db.get_db()
        cursor=conn.cursor()
        email=request.form.get('email')
-       username=request.form.get('username')
        password=request.form.get('password')
        error=None
-       if(not email or not username or not password):
-           error ="Fields cannot be left empty."
+       if(not email or not password):
+           error ="Enter Email and Password"
 
        if error is None:  
-         cursor.execute("insert into user(username,password) values(%s,%s)",(username,password))
+         cursor.execute("insert into people(email,password) values(%s,%s)",(email,password))
          conn.commit()
          conn.close()
          return redirect(url_for('login'))

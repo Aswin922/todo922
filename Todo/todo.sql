@@ -1,17 +1,18 @@
-DROP TABLE IF EXISTS user cascade;
-DROP TABLE IF EXISTS tasks;
+drop table if exists people cascade;
+drop table if exists task;
 
-
-create table user(
+ create table people (
        id serial primary key,
-       username text unique not null,
+       email text not null,
        password text not null       
 );
   
-create table tasks(      
+create table task(
+      
       id serial primary key,
-      task_name text not null,
-      due_date date not null,
+      taskname text not null,
+      duedate text not null,
       overdue varchar(1),
-      task_rec integer references user(id)      
+      taskrec integer references people(id)
+       
  );

@@ -26,7 +26,7 @@
                         </div>        
                     </div>
                 </div>
-                <div class="tm-col-right">
+     <div class="tm-col-right">
                     <nav class="navbar navbar-expand-lg" id="tm-main-nav">
                         <button class="navbar-toggler toggler-example mr-0 ml-auto" type="button" 
                             data-toggle="collapse" data-target="#navbar-nav" 
@@ -44,7 +44,7 @@
                                 <li class="nav-item">
         
                                 <li class="nav-item" style="padding-left:10px;">
-                                    <a id="Mybtn2"  class="nav-link tm-nav-link" href="#">Register</a>
+                                    <a id="Mybtn2"  class="nav-link tm-nav-link" href="logout">Log Out</a>
                                 </li>                            
                                 <li class="nav-item">
              
@@ -58,48 +58,50 @@
                 <div class="tm-col-left">
                    <div class =  "position" id="contact-form" >
                            <div style ="padding-bottom:30px;">
-                            <h3>Sign In</h3>
+                            <h3>Enter Task</h3>
                             
                            </div>    
-                      <form  action="/login" method="POST" class="edit">
+                      <form  action="/task/add" method="POST" class="edit">
                             <div class="form-group mb-4">
-                                <input type="email" name="email" class="form-control" placeholder="Email" required="" />
+                                <input type="text" name="task" class="form-control" placeholder="New Task" required="" />
                             </div>
                             <div class="form-group mb-4">
-                                <input type="password" name="password" class="form-control" placeholder="password" required="" />
+                                <input type="date" name="date" class="form-control" placeholder="due date" required="" />
                             </div>
                             <div class="form-group mb-5">
 
                             </div>
                             <div class="text-right">
-                                <button type="submit" class="btn btn-big btn-primary">Sign In</button>
+                                <button type="submit" class="btn btn-big btn-primary">Add Task</button>
                             
                         </form>
-                          <div style ="padding-top:10px;"><h6>{{error}}</h6></div>
+                          <div style ="padding-top:150px;"><h6>Info:</h6></div>
+                          <p class="tm-slogon">Click on the Tasks to Delete them.
+                                               <br>
+                                               Overdue tasks turns Grey.</p>
                    </div>
                   
-                 </div>
-                 </div>
+                </div>
+           </div>
                  <div class="tm-col-right" >
-                     <div class =  "position" id="contact-form1" style="display: none;" >
-                      <div style ="padding-bottom:30px;"> <h3>Sign Up</h3></div>    
-                     <form  action="/register" method="POST" class="edit">
-                            <div class="form-group mb-4">
-                                <input type="email" name="email" class="form-control" placeholder="Email" required="" />
-                            </div>
-                            <div class="form-group mb-4">
-                                <input type="password" name="password" class="form-control" placeholder="password" required="" />
-                            </div>
-                            <div class="form-group mb-5">
-
-                            </div>
-                            <div class="text-right">
-                                <button type="submit" class="btn btn-big btn-primary">Sign Up</button>
-                            </div>
-                           
-                        </form>
-                         
-                    </div>
+                     <div class="position">
+                     
+                      <div style ="padding-bottom:30px;"> <h3>Tasks</h3></div>    
+                        
+                       <div class ="cyanbox"style="border-color:white;">
+                           <ol class ="disp_desc">
+                            {% for data,numbers,overdue,id in datas %}
+                             {% if overdue=='y' %}
+                             <li class="tstyle" style="background-color:#6b7b8c;border-radius: 25px;"><a href="/task/delete/{{id}}" class="tm-sitename">{{data}}---{{numbers}} </a></li>
+                             {% else %}
+                              <li class="tstyle"><a href="/task/delete/{{id}}" class="tm-sitename">{{data}}---{{numbers}}</a></li>
+                             {% endif %}
+                            {%endfor%}
+                             
+                           </ol>
+                        </div>
+                        
+                  </div>     
                 </div>
                
             </div>
@@ -108,11 +110,7 @@
  
  <div class="tm-row">
             <div class="tm-col-left text-center">            
-                <ul class="tm-bg-controls-wrapper">
-                    <li class="tm-bg-control active" data-id="0"></li>
-                    <li class="tm-bg-control" data-id="1"></li>
-                    <li class="tm-bg-control" data-id="2"></li>
-                </ul>            
+               
             </div>        
             <div class="tm-col-right tm-col-footer">
                 <footer class="tm-site-footer text-right">
@@ -131,13 +129,11 @@
     </div>
    </div>
 
+
+
     <script src="{{url_for('static', filename='jquery-3.4.1.min.js')}}"></script>
     <script src="{{url_for('static', filename='bootstrap.min.js')}}"></script>
     <script src="{{url_for('static', filename='jquery.backstretch.min.js')}}"></script>
     <script src="{{url_for('static', filename='main.js')}}"></script>
-  <script>
-            
-
-  </script>
 </body>
 </html>
