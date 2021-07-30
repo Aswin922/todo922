@@ -7,7 +7,7 @@ from flask import Blueprint,flash,session,redirect,g
 
 
 def create_app():
-   app = Flask("todo-list-922")
+   app = Flask("todo-list")
    
    
    app.config.from_mapping(
